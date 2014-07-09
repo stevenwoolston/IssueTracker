@@ -18,7 +18,7 @@ Some things that I think are required here are:
 I have done as much as I can so far and have some stumbling blocks. These issues have been created in this repo so feel free to browse the issues list and make alterations accordingly.
 
 Feel free to contribute and share your knowledge.
-
+============
 Summary of the system:
 * IssueTracker.Data - all database calls are done in the layer
   * EF edmx is located in /DataModel
