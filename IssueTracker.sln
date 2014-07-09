@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.Business", "IssueTracker.Business\IssueTracker.Business.csproj", "{2BBA1CD1-5EEE-4CD6-93AB-7954AD25903E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.Data", "IssueTracker.Data\IssueTracker.Data.csproj", "{ADE11A29-1A02-46D5-AD98-6036DCC41D6E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IssueTracker.Database", "IssueTracker.Database\IssueTracker.Database.sqlproj", "{F5E0033E-291E-409D-8CED-880EBDE953B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.Web", "IssueTracker.Web\IssueTracker.Web.csproj", "{C03F79C2-B101-489D-8BA1-1DE6A7E4FACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.Web.Tests", "IssueTracker.Web.Tests\IssueTracker.Web.Tests.csproj", "{89E38CE6-6B7F-40DB-B082-B5E3130661B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.Domain", "IssueTracker.Domain\IssueTracker.Domain.csproj", "{BB65AD3A-7650-4C18-9222-E488D080854A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stevenwoolston.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IssueTracker.Business\\IssueTracker.Business.csproj
+		SccProjectName1 = IssueTracker.Business
+		SccLocalPath1 = IssueTracker.Business
+		SccProjectUniqueName2 = IssueTracker.Data\\IssueTracker.Data.csproj
+		SccProjectName2 = IssueTracker.Data
+		SccLocalPath2 = IssueTracker.Data
+		SccProjectUniqueName3 = IssueTracker.Database\\IssueTracker.Database.sqlproj
+		SccProjectName3 = IssueTracker.Database
+		SccLocalPath3 = IssueTracker.Database
+		SccProjectUniqueName4 = IssueTracker.Web\\IssueTracker.Web.csproj
+		SccProjectName4 = IssueTracker.Web
+		SccLocalPath4 = IssueTracker.Web
+		SccProjectUniqueName5 = IssueTracker.Web.Tests\\IssueTracker.Web.Tests.csproj
+		SccProjectName5 = IssueTracker.Web.Tests
+		SccLocalPath5 = IssueTracker.Web.Tests
+		SccProjectUniqueName6 = IssueTracker.Domain\\IssueTracker.Domain.csproj
+		SccProjectName6 = IssueTracker.Domain
+		SccLocalPath6 = IssueTracker.Domain
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BBA1CD1-5EEE-4CD6-93AB-7954AD25903E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBA1CD1-5EEE-4CD6-93AB-7954AD25903E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBA1CD1-5EEE-4CD6-93AB-7954AD25903E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBA1CD1-5EEE-4CD6-93AB-7954AD25903E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE11A29-1A02-46D5-AD98-6036DCC41D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE11A29-1A02-46D5-AD98-6036DCC41D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE11A29-1A02-46D5-AD98-6036DCC41D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE11A29-1A02-46D5-AD98-6036DCC41D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E0033E-291E-409D-8CED-880EBDE953B0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C03F79C2-B101-489D-8BA1-1DE6A7E4FACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03F79C2-B101-489D-8BA1-1DE6A7E4FACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03F79C2-B101-489D-8BA1-1DE6A7E4FACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03F79C2-B101-489D-8BA1-1DE6A7E4FACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E38CE6-6B7F-40DB-B082-B5E3130661B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E38CE6-6B7F-40DB-B082-B5E3130661B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E38CE6-6B7F-40DB-B082-B5E3130661B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E38CE6-6B7F-40DB-B082-B5E3130661B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB65AD3A-7650-4C18-9222-E488D080854A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB65AD3A-7650-4C18-9222-E488D080854A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB65AD3A-7650-4C18-9222-E488D080854A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB65AD3A-7650-4C18-9222-E488D080854A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

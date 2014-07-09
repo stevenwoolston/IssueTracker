@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IssuesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="IssuesModelStoreContainer">
+          <EntitySet Name="Attachment" EntityType="IssuesModel.Store.Attachment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="IssuesModel.Store.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageAttachment" EntityType="IssuesModel.Store.MessageAttachment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Thread" EntityType="IssuesModel.Store.Thread" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ThreadAttachment" EntityType="IssuesModel.Store.ThreadAttachment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="IssuesModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Message_Thread" Association="IssuesModel.Store.FK_Message_Thread">
+            <End Role="Thread" EntitySet="Thread" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageAttachment_Attachment" Association="IssuesModel.Store.FK_MessageAttachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="MessageAttachment" EntitySet="MessageAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageAttachment_Message" Association="IssuesModel.Store.FK_MessageAttachment_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessageAttachment" EntitySet="MessageAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThreadAttachment_Attachment" Association="IssuesModel.Store.FK_ThreadAttachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="ThreadAttachment" EntitySet="ThreadAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThreadAttachment_Thread" Association="IssuesModel.Store.FK_ThreadAttachment_Thread">
+            <End Role="Thread" EntitySet="Thread" />
+            <End Role="ThreadAttachment" EntitySet="ThreadAttachment" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OriginalTitle" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="GUID" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="AttachmentBinary" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ThreadId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModBy" Type="int" Nullable="false" />
+          <Property Name="LastModDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MessageId" Type="int" Nullable="false" />
+          <Property Name="AttachmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Thread">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModBy" Type="int" Nullable="false" />
+          <Property Name="LastModDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThreadAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ThreadId" Type="int" Nullable="false" />
+          <Property Name="AttachmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="WindowsUserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Message_Thread">
+          <End Role="Thread" Type="IssuesModel.Store.Thread" Multiplicity="1" />
+          <End Role="Message" Type="IssuesModel.Store.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thread">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ThreadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageAttachment_Attachment">
+          <End Role="Attachment" Type="IssuesModel.Store.Attachment" Multiplicity="1" />
+          <End Role="MessageAttachment" Type="IssuesModel.Store.MessageAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachment">
+              <PropertyRef Name="AttachmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageAttachment_Message">
+          <End Role="Message" Type="IssuesModel.Store.Message" Multiplicity="1" />
+          <End Role="MessageAttachment" Type="IssuesModel.Store.MessageAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachment">
+              <PropertyRef Name="MessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThreadAttachment_Attachment">
+          <End Role="Attachment" Type="IssuesModel.Store.Attachment" Multiplicity="1" />
+          <End Role="ThreadAttachment" Type="IssuesModel.Store.ThreadAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ThreadAttachment">
+              <PropertyRef Name="AttachmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThreadAttachment_Thread">
+          <End Role="Thread" Type="IssuesModel.Store.Thread" Multiplicity="1" />
+          <End Role="ThreadAttachment" Type="IssuesModel.Store.ThreadAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thread">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ThreadAttachment">
+              <PropertyRef Name="ThreadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IssuesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IssuesEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Attachment" EntityType="IssuesModel.Attachment" />
+          <EntitySet Name="Message" EntityType="IssuesModel.Message" />
+          <EntitySet Name="MessageAttachment" EntityType="IssuesModel.MessageAttachment" />
+          <EntitySet Name="Thread" EntityType="IssuesModel.Thread" />
+          <EntitySet Name="ThreadAttachment" EntityType="IssuesModel.ThreadAttachment" />
+          <EntitySet Name="Users" EntityType="IssuesModel.Users" />
+          <AssociationSet Name="FK_MessageAttachment_Attachment" Association="IssuesModel.FK_MessageAttachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="MessageAttachment" EntitySet="MessageAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThreadAttachment_Attachment" Association="IssuesModel.FK_ThreadAttachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="ThreadAttachment" EntitySet="ThreadAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Thread" Association="IssuesModel.FK_Message_Thread">
+            <End Role="Thread" EntitySet="Thread" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageAttachment_Message" Association="IssuesModel.FK_MessageAttachment_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessageAttachment" EntitySet="MessageAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThreadAttachment_Thread" Association="IssuesModel.FK_ThreadAttachment_Thread">
+            <End Role="Thread" EntitySet="Thread" />
+            <End Role="ThreadAttachment" EntitySet="ThreadAttachment" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OriginalTitle" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="AttachmentBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="MessageAttachment" Relationship="IssuesModel.FK_MessageAttachment_Attachment" FromRole="Attachment" ToRole="MessageAttachment" />
+          <NavigationProperty Name="ThreadAttachment" Relationship="IssuesModel.FK_ThreadAttachment_Attachment" FromRole="Attachment" ToRole="ThreadAttachment" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ThreadId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Thread" Relationship="IssuesModel.FK_Message_Thread" FromRole="Message" ToRole="Thread" />
+          <NavigationProperty Name="MessageAttachment" Relationship="IssuesModel.FK_MessageAttachment_Message" FromRole="Message" ToRole="MessageAttachment" />
+        </EntityType>
+        <EntityType Name="MessageAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageId" Type="Int32" Nullable="false" />
+          <Property Name="AttachmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attachment" Relationship="IssuesModel.FK_MessageAttachment_Attachment" FromRole="MessageAttachment" ToRole="Attachment" />
+          <NavigationProperty Name="Message" Relationship="IssuesModel.FK_MessageAttachment_Message" FromRole="MessageAttachment" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Thread">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Message" Relationship="IssuesModel.FK_Message_Thread" FromRole="Thread" ToRole="Message" />
+          <NavigationProperty Name="ThreadAttachment" Relationship="IssuesModel.FK_ThreadAttachment_Thread" FromRole="Thread" ToRole="ThreadAttachment" />
+        </EntityType>
+        <EntityType Name="ThreadAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ThreadId" Type="Int32" Nullable="false" />
+          <Property Name="AttachmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attachment" Relationship="IssuesModel.FK_ThreadAttachment_Attachment" FromRole="ThreadAttachment" ToRole="Attachment" />
+          <NavigationProperty Name="Thread" Relationship="IssuesModel.FK_ThreadAttachment_Thread" FromRole="ThreadAttachment" ToRole="Thread" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="WindowsUserName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_MessageAttachment_Attachment">
+          <End Role="Attachment" Type="IssuesModel.Attachment" Multiplicity="1" />
+          <End Role="MessageAttachment" Type="IssuesModel.MessageAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachment">
+              <PropertyRef Name="AttachmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThreadAttachment_Attachment">
+          <End Role="Attachment" Type="IssuesModel.Attachment" Multiplicity="1" />
+          <End Role="ThreadAttachment" Type="IssuesModel.ThreadAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ThreadAttachment">
+              <PropertyRef Name="AttachmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Thread">
+          <End Role="Thread" Type="IssuesModel.Thread" Multiplicity="1" />
+          <End Role="Message" Type="IssuesModel.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thread">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ThreadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageAttachment_Message">
+          <End Role="Message" Type="IssuesModel.Message" Multiplicity="1" />
+          <End Role="MessageAttachment" Type="IssuesModel.MessageAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachment">
+              <PropertyRef Name="MessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThreadAttachment_Thread">
+          <End Role="Thread" Type="IssuesModel.Thread" Multiplicity="1" />
+          <End Role="ThreadAttachment" Type="IssuesModel.ThreadAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thread">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ThreadAttachment">
+              <PropertyRef Name="ThreadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IssuesModelStoreContainer" CdmEntityContainer="IssuesEntities">
+          <EntitySetMapping Name="Attachment">
+            <EntityTypeMapping TypeName="IssuesModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OriginalTitle" ColumnName="OriginalTitle" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="AttachmentBinary" ColumnName="AttachmentBinary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="IssuesModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ThreadId" ColumnName="ThreadId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+                <ScalarProperty Name="LastModDate" ColumnName="LastModDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageAttachment">
+            <EntityTypeMapping TypeName="IssuesModel.MessageAttachment">
+              <MappingFragment StoreEntitySet="MessageAttachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="AttachmentId" ColumnName="AttachmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thread">
+            <EntityTypeMapping TypeName="IssuesModel.Thread">
+              <MappingFragment StoreEntitySet="Thread">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+                <ScalarProperty Name="LastModDate" ColumnName="LastModDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThreadAttachment">
+            <EntityTypeMapping TypeName="IssuesModel.ThreadAttachment">
+              <MappingFragment StoreEntitySet="ThreadAttachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ThreadId" ColumnName="ThreadId" />
+                <ScalarProperty Name="AttachmentId" ColumnName="AttachmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IssuesModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WindowsUserName" ColumnName="WindowsUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

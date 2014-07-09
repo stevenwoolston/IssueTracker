@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f33832e9b3f0463ba931ebb462e21ea2" Name="Diagram1">
+        <EntityTypeShape EntityType="IssuesModel.Attachment" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IssuesModel.Message" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IssuesModel.MessageAttachment" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IssuesModel.Thread" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IssuesModel.ThreadAttachment" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IssuesModel.Users" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="IssuesModel.FK_MessageAttachment_Attachment" ManuallyRouted="false" />
+        <AssociationConnector Association="IssuesModel.FK_ThreadAttachment_Attachment" ManuallyRouted="false" />
+        <AssociationConnector Association="IssuesModel.FK_Message_Thread" ManuallyRouted="false" />
+        <AssociationConnector Association="IssuesModel.FK_MessageAttachment_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="IssuesModel.FK_ThreadAttachment_Thread" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
