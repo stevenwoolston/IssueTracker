@@ -10,7 +10,7 @@ using IssueTracker.Data.DataContext;
 
 namespace IssueTracker.Data
 {
-    public class ThreadRepository : IThreadRepository
+    public class ThreadRepository
     {
         private IssuesEntities context;
         public ThreadRepository()

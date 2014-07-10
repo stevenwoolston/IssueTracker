@@ -23,6 +23,8 @@ namespace IssueTracker.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            //Bootstrapper.Run();
         }
     }
 

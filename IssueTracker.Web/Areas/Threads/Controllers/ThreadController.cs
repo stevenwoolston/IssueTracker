@@ -13,9 +13,9 @@ namespace IssueTracker.Web.Areas.Threads.Controllers
     public class ThreadController : Controller
     {
         private ThreadViewModelBuilder _builder = null;
-        public ThreadController(ThreadViewModelBuilder builder)
+        public ThreadController()
         {
-            _builder = builder;
+            _builder = new ThreadViewModelBuilder();
         }
         //
         // GET: /Threads/Thread/

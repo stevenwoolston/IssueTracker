@@ -1,5 +1,4 @@
-﻿using IssueTracker.Data.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,40 +6,41 @@ using System.Threading.Tasks;
 using AutoMapper;
 using IssueTracker.Data.DataContext;
 using IssueTracker.Domain;
+using IssueTracker.Data;
 
 namespace IssueTracker.Business
 {
-    public class ThreadBusiness : IThreadBusiness
+    public class ThreadBusiness
     {
-        IThreadRepository iThreadRepository = null;
-        public ThreadBusiness(IThreadRepository iThreadRepository)
+        ThreadRepository threadRepository = null;
+        public ThreadBusiness()
         {
-            this.iThreadRepository = iThreadRepository;
+            this.threadRepository = new ThreadRepository();
         }
 
         public List<Thread> GetThreads()
         {
-            return iThreadRepository.GetThreads().ToList();
+            return threadRepository.GetThreads().ToList();
         }
 
         public Thread GetThreadById(int threadId)
         {
-            return iThreadRepository.GetThreadById(threadId);
+            return threadRepository.GetThreadById(threadId);
         }
 
         public int AddThread(Thread thread)
         {
-            return iThreadRepository.AddThread(thread);
+            return threadRepository.AddThread(thread);
         }
 
         public int UpdateThread(Thread thread)
         {
-            return iThreadRepository.UpdateThread(thread);
+            return threadRepository.UpdateThread(thread);
         }
 
         public bool DeleteThread(int threadId)
         {
-            return iThreadRepository.DeleteThread(threadId);
+            return threadRepository.DeleteThread(threadId);
         }
     }
 }
