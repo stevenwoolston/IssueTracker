@@ -24,7 +24,7 @@ namespace IssueTracker.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            //Bootstrapper.Run();
+            Bootstrapper.Initialise();
         }
     }
 

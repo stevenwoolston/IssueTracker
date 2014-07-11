@@ -7,40 +7,41 @@ using AutoMapper;
 using IssueTracker.Data.DataContext;
 using IssueTracker.Domain;
 using IssueTracker.Data;
+using IssueTracker.Data.Repository;
 
 namespace IssueTracker.Business
 {
-    public class ThreadBusiness
+    public class ThreadBusiness : IThreadBusiness
     {
-        ThreadRepository threadRepository = null;
-        public ThreadBusiness()
+        IThreadRepository<IssuesEntities> iThreadRepository = null;
+        public ThreadBusiness(IThreadRepository<IssuesEntities> iThreadRepository)
         {
-            this.threadRepository = new ThreadRepository();
+            this.iThreadRepository = iThreadRepository;
         }
 
         public List<Thread> GetThreads()
         {
-            return threadRepository.GetThreads().ToList();
+            return iThreadRepository.GetThreads().ToList();
         }
 
         public Thread GetThreadById(int threadId)
         {
-            return threadRepository.GetThreadById(threadId);
+            return iThreadRepository.GetThreadById(threadId);
         }
 
         public int AddThread(Thread thread)
         {
-            return threadRepository.AddThread(thread);
+            return iThreadRepository.AddThread(thread);
         }
 
         public int UpdateThread(Thread thread)
         {
-            return threadRepository.UpdateThread(thread);
+            return iThreadRepository.UpdateThread(thread);
         }
 
         public bool DeleteThread(int threadId)
         {
-            return threadRepository.DeleteThread(threadId);
+            return iThreadRepository.DeleteThread(threadId);
         }
     }
 }

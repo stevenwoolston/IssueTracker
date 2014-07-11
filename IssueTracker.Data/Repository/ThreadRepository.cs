@@ -10,12 +10,12 @@ using IssueTracker.Data.DataContext;
 
 namespace IssueTracker.Data
 {
-    public class ThreadRepository
+    public class ThreadRepository<CONTEXT> : IThreadRepository<CONTEXT> where CONTEXT : IssuesEntities
     {
-        private IssuesEntities context;
-        public ThreadRepository()
+        IssuesEntities context = null;
+        public ThreadRepository(IssuesEntities context)
         {
-            this.context = new IssuesEntities();
+            this.context = context;
         }
 
         public IQueryable<Domain.Thread> GetThreads()

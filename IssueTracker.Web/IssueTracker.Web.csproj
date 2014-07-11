@@ -211,7 +211,31 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\JsonExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Model.MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelAttachment.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelMessage.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelMessageAttachment.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelThread.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelThreadAttachment.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModelUsers.cs">
+      <DependentUpon>Model.MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +297,10 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\Threads\Views\Web.config" />
     <Content Include="Areas\Threads\Views\Shared\Index.cshtml" />
+    <Content Include="Models\Model.MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.MVC.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -330,6 +358,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_GlobalResources\" />
     <Folder Include="Areas\Threads\Views\Thread\" />
   </ItemGroup>
   <ItemGroup>

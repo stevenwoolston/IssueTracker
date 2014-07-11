@@ -9,39 +9,39 @@ namespace IssueTracker.Web.Areas.Threads.Models
 {
     public class ThreadViewModelBuilder
     {
-        protected readonly ThreadBusiness threadBusiness;
-        public ThreadViewModelBuilder()
+        protected readonly IThreadBusiness iThreadBusiness;
+        public ThreadViewModelBuilder(IThreadBusiness iThreadBusiness)
         {
-            this.threadBusiness = new ThreadBusiness();
+            this.iThreadBusiness = iThreadBusiness;
         }
 
         public List<Thread> GetAllThreads()
         {
-            List<Thread> threads = threadBusiness.GetThreads();
+            List<Thread> threads = iThreadBusiness.GetThreads();
             return threads;
         }
 
         public Thread GetThreadById(int id)
         {
-            Thread thread = threadBusiness.GetThreadById(id);
+            Thread thread = iThreadBusiness.GetThreadById(id);
             return thread;
         }
 
         public int CreateThread(Thread thread)
         {
-            int id = threadBusiness.AddThread(thread);
+            int id = iThreadBusiness.AddThread(thread);
             return id;
         }
 
         public int UpdateThread(Thread thread)
         {
-            int id = threadBusiness.UpdateThread(thread);
+            int id = iThreadBusiness.UpdateThread(thread);
             return id;
         }
 
         public bool DeleteThread(int id)
         {
-            bool result = threadBusiness.DeleteThread(id);
+            bool result = iThreadBusiness.DeleteThread(id);
             return result;
         }
     }

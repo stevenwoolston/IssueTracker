@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Data.Repository
 {
-    public interface IThreadRepository
+    public interface IThreadRepository<IssueEntities>
     {
         IQueryable<Thread> GetThreads();
         Thread GetThreadById(int threadId);
